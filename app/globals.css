@@ -1,33 +1,95 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(45deg, black, transparent);
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+h2 {
+  color: whitesmoke;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.board {
+  margin: auto;
+  border-spacing: 0px;
+  border-style: groove;
+  border-width: 20px;
+  border-color: #bfbebe;
+  margin-block: 1rem;
+}
+
+.board td {
+  width: 25px;
+  height: 25px;
+  background: #9d9d9d;
+  border: 5px groove #a1a1a1;
+  border-radius: 10px;
+  &:hover {
+    background: #695858;
   }
+}
+
+.board td.mine {
+  background-color: rgb(209, 23, 23);
+}
+
+.board td.empty {
+  background: #d4d4d4;
+  pointer-events: none;
+}
+
+.board td.flag {
+  background: #d4d4d4;
+  pointer-events: none;
+}
+
+.lose-container {
+  height: 400px;
+}
+
+button {
+  color: #ededed;
+  margin-top: 3rem;
+  margin: auto;
+  margin-bottom: 3rem;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  background-color: #626262a8;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.readme h2 {
+  color: #ededed;
+}
+
+.last-try {
+  color: black;
+}
+
+/* Borders */
+
+[data-top="borderless-top"] {
+  border-top: transparent !important;
+  border-radius: 0px !important;
+}
+
+[data-right="borderless-right"] {
+  border-right: transparent !important;
+  border-radius: 0px !important;
+}
+
+[data-left="borderless-left"] {
+  border-left: transparent !important;
+  border-radius: 0px !important;
+}
+
+[data-bottom="borderless-bottom"] {
+  border-bottom: transparent !important;
+  border-radius: 0px !important;
 }
