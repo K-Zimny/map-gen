@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import Board from "@/app/components/Board";
+import Grid from "@/app/components/Grid";
 
 export default function Home() {
   return (
     <div className="App">
-      <Board></Board>
+      <Grid></Grid>
     </div>
   );
 }

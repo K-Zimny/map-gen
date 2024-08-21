@@ -1,7 +1,8 @@
 body {
-  background: linear-gradient(45deg, black, transparent);
-  background-repeat: no-repeat;
-  min-height: 100vh;
+  margin: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 h2 {
@@ -14,23 +15,23 @@ h2 {
 }
 
 .board {
-  margin: auto;
-  border-spacing: 0px;
-  border-style: groove;
-  border-width: 20px;
-  border-color: #bfbebe;
-  margin-block: 1rem;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border: none;
+  border-spacing: 0;
 }
 
 .board td {
   width: 25px;
   height: 25px;
-  background: #9d9d9d;
+  background: #329971;
   border: 5px groove #a1a1a1;
   border-radius: 10px;
-  &:hover {
-    background: #695858;
-  }
+}
+
+.board td:hover {
+  background: #695858;
 }
 
 .board td.mine {
@@ -38,7 +39,7 @@ h2 {
 }
 
 .board td.empty {
-  background: #d4d4d4;
+  background: #46a7ba;
   pointer-events: none;
 }
 
@@ -53,9 +54,7 @@ h2 {
 
 button {
   color: #ededed;
-  margin-top: 3rem;
-  margin: auto;
-  margin-bottom: 3rem;
+  margin: 3rem auto;
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
   background-color: #626262a8;
@@ -76,20 +75,20 @@ button {
 
 [data-top="borderless-top"] {
   border-top: transparent !important;
-  border-radius: 0px !important;
+  border-radius: 0 !important;
 }
 
 [data-right="borderless-right"] {
   border-right: transparent !important;
-  border-radius: 0px !important;
+  border-radius: 0 !important;
 }
 
 [data-left="borderless-left"] {
   border-left: transparent !important;
-  border-radius: 0px !important;
+  border-radius: 0 !important;
 }
 
 [data-bottom="borderless-bottom"] {
   border-bottom: transparent !important;
-  border-radius: 0px !important;
+  border-radius: 0 !important;
 }

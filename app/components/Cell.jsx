@@ -1,93 +1,22 @@
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-const determineTopBorderless = ({ value, top }) => {
-  if (value == top) return "borderless-top";
+const determineBorderless = (direction, value, adjacentValue) => {
+  if (value === adjacentValue) return `borderless-${direction}`;
 };
 
-const determineRightBorderless = ({ value, right }) => {
-  if (value == right) return "borderless-right";
-};
+export default function Cell({ id, cellData }) {
+  const { value, top, right, bottom, left } = cellData;
 
-const determineBottomBorderless = ({ value, bottom }) => {
-  if (value == bottom) return "borderless-bottom";
-};
+  const className = value === 0 ? "unexplored" : "empty";
 
-const determineLeftBorderless = ({ value, left }) => {
-  if (value == left) return "borderless-left";
-};
-
-export default function Cell({
-  onGameUpdate,
-  gameState,
-  isOver,
-  id,
-  currentCell,
-}) {
-  // console.log("currentCell: ", currentCell);
-
-  const cellValue = gameState[id[0]][id[1]];
   return (
     <td
       id={id}
-      // Complexity 2 result in binary board.
-      className={
-        cellValue === 0 ? "unexplored" : cellValue === 1 ? "empty" : "empty"
-      }
-      data-top={determineTopBorderless(currentCell)}
-      data-right={determineRightBorderless(currentCell)}
-      data-left={determineLeftBorderless(currentCell)}
-      data-bottom={determineBottomBorderless(currentCell)}
-      // className={
-      //   !isOver
-      //     ? cellValue === 0
-      //       ? "unexplored"
-      //       : cellValue === 1
-      //       ? "empty"
-      //       : cellValue === 2
-      //       ? "flag"
-      //       : cellValue === 3
-      //       ? "unexplored"
-      //       : cellValue === 4
-      //       ? "unexplored"
-      //       : cellValue === 5
-      //       ? "mine"
-      //       : "unexplored"
-      //     : cellValue === 0
-      //     ? "unexplored"
-      //     : cellValue === 1
-      //     ? "empty"
-      //     : cellValue === 2
-      //     ? "flag"
-      //     : cellValue === 3
-      //     ? "unexplored"
-      //     : cellValue === 5
-      //     ? "mine"
-      //     : "unexplored"
-      // }
-      onClick={onGameUpdate}
+      className={className}
+      data-top={determineBorderless("top", value, top)}
+      data-right={determineBorderless("right", value, right)}
+      data-left={determineBorderless("left", value, left)}
+      data-bottom={determineBorderless("bottom", value, bottom)}
     >
-      {/* {cellValue} */}
-      {cellValue === 0 ? "" : cellValue === 1 ? "" : ""}
-      {/* {!isOver
-        ? cellValue === 0
-          ? " "
-          : cellValue === 1
-          ? " "
-          : cellValue === 3
-          ? ""
-          : cellValue === 4
-          ? ""
-          : cellValue === 5
-          ? "💣"
-          : // : getRandomInt(3) + 1}
-            cellValue
-        : cellValue === 3
-        ? "💣"
-        : cellValue === 5
-        ? "💣"
-        : cellValue} */}
+      {/* Cell content can be added here if needed */}
     </td>
   );
 }
