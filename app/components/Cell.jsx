@@ -2,6 +2,12 @@ const determineBorderless = (direction, value, adjacentValue) => {
   if (value === adjacentValue) return `borderless-${direction}`;
 };
 
+const determineIsolatedCell = (value, top, right, left, bottom) => {
+  if (value !== top && value !== right && value !== left && value !== bottom) {
+    return true;
+  }
+};
+
 export default function Cell({ id, cellData }) {
   const { value, top, right, bottom, left } = cellData;
 
@@ -11,6 +17,7 @@ export default function Cell({ id, cellData }) {
     <td
       id={id}
       className={className}
+      data-isolated={determineIsolatedCell(value, top, right, left, bottom)}
       data-top={determineBorderless("top", value, top)}
       data-right={determineBorderless("right", value, right)}
       data-left={determineBorderless("left", value, left)}

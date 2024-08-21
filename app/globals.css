@@ -14,7 +14,7 @@ h2 {
   text-align: center;
 }
 
-.board {
+.grid {
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -22,28 +22,31 @@ h2 {
   border-spacing: 0;
 }
 
-.board td {
+.grid td {
   width: 25px;
   height: 25px;
-  background: #329971;
+  background-image: url(../public/grass_3.png);
+  background-size: contain;
   border: 2px solid #e4dace;
   border-radius: 10px;
 }
 
-.board td:hover {
+.grid td:hover {
   background: #695858;
 }
 
-.board td.mine {
+.grid td.mine {
   background-color: rgb(209, 23, 23);
 }
 
-.board td.empty {
+.grid td.empty {
   background: #46a7ba;
+  background-image: url(../public/mountain_1.webp);
+  background-size: cover;
   pointer-events: none;
 }
 
-.board td.flag {
+.grid td.flag {
   background: #d4d4d4;
   pointer-events: none;
 }
@@ -91,4 +94,13 @@ button {
 [data-bottom="borderless-bottom"] {
   border-bottom: transparent !important;
   border-radius: 0 !important;
+}
+
+/* Mountains */
+
+[data-isolated="true"] {
+  background-image: none !important;
+  background-color: rgb(127, 127, 127) !important;
+  border: transparent !important;
+  border-radius: 0px !important;
 }

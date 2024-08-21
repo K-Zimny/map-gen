@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Cell from "./Cell";
 
 const GRID_SIZE = 20;
-const COMPLEXITY = 1.4; // Complexity 2 results in a binary board
+const COMPLEXITY = 1.45; // Complexity 2 results in a binary board
 
 function genGrid(rows, cols, complexity) {
   function getRandomInt(max) {
@@ -28,7 +28,7 @@ export default function Grid() {
   return (
     <>
       {grid && (
-        <table className="board">
+        <table className="grid">
           <tbody>
             {grid.map((row, rowIndex) => (
               <tr key={rowIndex}>
