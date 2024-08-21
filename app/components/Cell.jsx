@@ -17,6 +17,7 @@ export default function Cell({ id, cellData }) {
       data-bottom={determineBorderless("bottom", value, bottom)}
     >
       {/* Cell content can be added here if needed */}
+      {/* {value} */}
     </td>
   );
 }
