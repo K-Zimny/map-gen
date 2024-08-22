@@ -8,7 +8,7 @@ const determineIsolatedCell = (value, top, right, left, bottom) => {
   }
 };
 
-export default function Cell({ id, cellData }) {
+export default function Cell({ id, cellData, showCellValues }) {
   const { value, top, right, bottom, left } = cellData;
 
   const className = value === 0 ? "unexplored" : "empty";
@@ -17,6 +17,7 @@ export default function Cell({ id, cellData }) {
     <td
       id={id}
       className={className}
+      data-value={showCellValues}
       data-isolated={determineIsolatedCell(value, top, right, left, bottom)}
       data-top={determineBorderless("top", value, top)}
       data-right={determineBorderless("right", value, right)}

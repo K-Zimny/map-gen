@@ -8,15 +8,38 @@ h2 {
 }
 
 .App {
-  font-family: sans-serif;
-  text-align: center;
+  font-family: monospace;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+/* Controls */
+
+.controls {
+  width: 20%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: white;
+
+  .input-group {
+    margin-bottom: 0.5rem;
+    label {
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    input {
+      margin: 0;
+    }
+  }
+}
+
+/* Grid */
 
 .grid {
+  width: 80%;
+  height: 100%;
   margin: 0;
   border: none;
   border-spacing: 0;
@@ -29,13 +52,13 @@ h2 {
   background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid #e4dace;
-  border-radius: 10px;
   font-weight: bold;
   font-size: 1.75rem;
 }
 
 .grid td:hover {
-  background: #695858;
+  outline: 5px solid #ff8500;
+  outline-offset: -5px;
 }
 
 .grid td.mine {
@@ -60,13 +83,12 @@ h2 {
 
 button {
   color: #ededed;
-  margin: 3rem auto;
+  margin: 1rem auto;
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
-  background-color: #626262a8;
+  background-color: #1e66f7;
   border: 1px solid white;
-  border-radius: 20px;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .readme h2 {
