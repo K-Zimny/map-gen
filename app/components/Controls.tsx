@@ -24,16 +24,7 @@ export default function Controls({
       <p>Controls</p>
       <hr />
       <div className="input-group">
-        <button
-          onClick={() => {
-            setRegenerateGrid(true);
-          }}
-        >
-          Generate New Map
-        </button>
-      </div>
-      <div className="input-group">
-        <label htmlFor="gridSize">{`Grid Size: ${gridSize}`}</label>
+        <label htmlFor="gridSize">{`Grid Size: ${gridSize} X ${gridSize}`}</label>
         <input
           id="gridSize"
           type="range"
@@ -45,9 +36,13 @@ export default function Controls({
             setGridSize(Number(e.target.value));
           }}
         />
+        <div className="range-label">
+          <p>0</p>
+          <p>75</p>
+        </div>
       </div>
       <div className="input-group">
-        <label htmlFor="complexity">{`Complexity: ${complexity}`}</label>
+        <label htmlFor="complexity">{`Complexity*: ${complexity}`}</label>
         <input
           id="complexity"
           type="range"
@@ -59,6 +54,22 @@ export default function Controls({
             setComplexity(Number(e.target.value));
           }}
         />
+        <div className="range-label">
+          <p>Continent</p>
+          <p>Archipelago</p>
+        </div>
+        <p className="text-sm">
+          *Effects the variation of individuals cells and layout.
+        </p>
+      </div>
+      <div className="input-group">
+        <button
+          onClick={() => {
+            setRegenerateGrid(true);
+          }}
+        >
+          Generate New Map
+        </button>
       </div>
     </div>
   );
