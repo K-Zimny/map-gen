@@ -65,7 +65,7 @@ h2 {
 .grid td {
   width: 25px;
   height: 25px;
-  background-image: url(../public/grass.jpg);
+  background-image: url(../public/grass.webp);
   background-size: cover;
   background-repeat: no-repeat;
   border: 2px solid #e4dace;
@@ -84,7 +84,7 @@ h2 {
 
 .grid td.empty {
   background: #46a7ba;
-  background-image: url(../public/water.jpg);
+  background-image: url(../public/water.webp);
   background-size: cover;
   pointer-events: none;
 }

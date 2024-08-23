@@ -18,7 +18,7 @@ export default function Cell({ id, cellData, showCellValues }) {
       id={id}
       className={className}
       data-value={showCellValues}
-      data-isolated={determineIsolatedCell(value, top, right, left, bottom)}
+      // data-isolated={determineIsolatedCell(value, top, right, left, bottom)}
       data-top={determineBorderless("top", value, top)}
       data-right={determineBorderless("right", value, right)}
       data-left={determineBorderless("left", value, left)}
