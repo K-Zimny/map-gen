@@ -29,16 +29,18 @@ export default function Home() {
 
   return (
     <div className="App">
-      <>
-        <Controls
-          gridSize={gridSize}
-          setGridSize={setGridSize}
-          complexity={complexity}
-          setComplexity={setComplexity}
-          setRegenerateGrid={setRegenerateGrid}
-        />
-        <Grid grid={grid} />
-      </>
+      {grid && (
+        <>
+          <Controls
+            gridSize={gridSize}
+            setGridSize={setGridSize}
+            complexity={complexity}
+            setComplexity={setComplexity}
+            setRegenerateGrid={setRegenerateGrid}
+          />
+          <Grid grid={grid} />
+        </>
+      )}
     </div>
   );
 }
