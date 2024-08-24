@@ -13,7 +13,19 @@ function genGrid(rows: number, cols: number, complexity: number): number[][] {
     return Array.from({ length }, () => getRandomInt(complexity));
   }
 
-  return Array.from({ length: rows }, () => genArray(complexity, cols));
+  const generatedGrid = Array.from({ length: rows }, () =>
+    genArray(complexity, cols)
+  );
+  console.log(generatedGrid);
+  return generatedGrid;
+}
+
+function testGrid() {
+  return [
+    [0, 0, 0],
+    [0, 1, 0],
+    [0, 0, 0],
+  ];
 }
 
 export default function Home() {
@@ -23,7 +35,8 @@ export default function Home() {
   const [regenerateGrid, setRegenerateGrid] = useState(false);
 
   useEffect(() => {
-    setGrid(genGrid(gridSize, gridSize, complexity));
+    // setGrid(genGrid(gridSize, gridSize, complexity));
+    setGrid(testGrid());
     setRegenerateGrid(false);
   }, [gridSize, complexity, regenerateGrid]);
 

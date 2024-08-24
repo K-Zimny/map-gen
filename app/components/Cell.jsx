@@ -1,4 +1,9 @@
 const determineBorderless = (direction, value, adjacentValue) => {
+  console.log(
+    "determineBorderless value, adjectcent Value: ",
+    value,
+    adjacentValue
+  );
   if (value === adjacentValue) return `borderless-${direction}`;
 };
 
@@ -8,8 +13,12 @@ const determineIsolatedCell = (value, top, right, left, bottom) => {
   }
 };
 
-export default function Cell({ id, cellData, showCellValues }) {
+export default function Cell({ id, cellData, grid, showCellValues }) {
   const { value, top, right, bottom, left } = cellData;
+
+  console.table(grid);
+
+  console.log("value in cell(): ", value);
 
   const className = value === 0 ? "unexplored" : "empty";
 
@@ -25,7 +34,7 @@ export default function Cell({ id, cellData, showCellValues }) {
       data-bottom={determineBorderless("bottom", value, bottom)}
     >
       {/* Cell content can be added here if needed */}
-      {/* {value} */}
+      {value}
     </td>
   );
 }
