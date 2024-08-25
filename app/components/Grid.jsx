@@ -3,17 +3,42 @@
 import React from "react";
 import Cell from "./Cell";
 
-export default function Grid({ grid }) {
-  // const newGrid =
+const gridAlgorithm = (
+  grid,
+  cell,
+  rowIndex,
+  cellIndex,
+  removeIsolatedCells
+) => {
+  // Cell values adjacent to the current cell.
+  const adjacentTop = grid[rowIndex - 1]?.[cellIndex];
+  const adjacentRight = grid[rowIndex]?.[cellIndex + 1];
+  const adjacentBottom = grid[rowIndex + 1]?.[cellIndex];
+  const adjacentLeft = grid[rowIndex]?.[cellIndex - 1];
 
-  /**
-   * The issus is that the cell checking is happening against the original grid array, not the new cell values that are being update. Updating the original grid array will solve this issue. (tested and it does work.)
-   */
+  // Removes Isolated Cells
+  if (removeIsolatedCells) {
+    const isIsolated =
+      cell !== adjacentTop &&
+      cell !== adjacentRight &&
+      cell !== adjacentBottom &&
+      cell !== adjacentLeft;
+    if (isIsolated) {
+      grid[rowIndex][cellIndex] = cell === 1 ? 0 : 1;
+    }
+  }
 
-  // grid = [
-  //   [1, 1, 1],
-  //   [1, 1, 1],
-  // ];
+  // Cell Data
+  return {
+    value: cell,
+    top: cell === adjacentTop ? "borderless-top" : "",
+    right: cell === adjacentRight ? "borderless-right" : "",
+    bottom: cell === adjacentBottom ? "borderless-bottom" : "",
+    left: cell === adjacentLeft ? "borderless-left" : "",
+  };
+};
+
+export default function Grid({ grid, removeIsolatedCells }) {
   return (
     <>
       {grid && (
@@ -22,24 +47,18 @@ export default function Grid({ grid }) {
             {grid.map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {row.map((cell, cellIndex) => {
-                  console.log("cell", cell);
-                  if (cell == 1) {
-                    grid[rowIndex][cellIndex] = 0;
-                  }
-                  const cellData = {
-                    value: cell,
-                    origin: [rowIndex, cellIndex],
-                    top: grid[rowIndex - 1]?.[cellIndex],
-                    right: grid[rowIndex]?.[cellIndex + 1],
-                    bottom: grid[rowIndex + 1]?.[cellIndex],
-                    left: grid[rowIndex]?.[cellIndex - 1],
-                  };
+                  const cellData = gridAlgorithm(
+                    grid,
+                    cell,
+                    rowIndex,
+                    cellIndex,
+                    removeIsolatedCells
+                  );
                   return (
                     <Cell
                       key={`${rowIndex}-${cellIndex}`}
-                      id={[rowIndex, cellIndex]}
+                      id={`${rowIndex}-${cellIndex}`}
                       cellData={cellData}
-                      grid={grid}
                     />
                   );
                 })}

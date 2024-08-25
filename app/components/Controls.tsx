@@ -9,6 +9,8 @@ interface ControlsProps {
   complexity: number;
   setComplexity: React.Dispatch<React.SetStateAction<number>>;
   setRegenerateGrid: React.Dispatch<React.SetStateAction<boolean>>;
+  removeIsolatedCells: boolean;
+  setRemoveIsolatedCells: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Controls({
@@ -17,6 +19,8 @@ export default function Controls({
   complexity,
   setComplexity,
   setRegenerateGrid,
+  removeIsolatedCells,
+  setRemoveIsolatedCells,
 }: ControlsProps) {
   return (
     <div className="controls">
@@ -59,8 +63,20 @@ export default function Controls({
           <p>Archipelago</p>
         </div>
         <p className="text-sm">
-          *Effects the variation of individuals cells and layout.
+          *Effects the variation of individual cells and layout.
         </p>
+      </div>
+      <div className="input-group">
+        <label htmlFor="removeIsolatedCells">Remove Isolated Cells</label>
+        <input
+          id="removeIsolatedCells"
+          className="w-fit"
+          type="checkbox"
+          checked={removeIsolatedCells}
+          onClick={() => {
+            setRemoveIsolatedCells((prevState) => !prevState);
+          }}
+        ></input>
       </div>
       <div className="input-group">
         <button

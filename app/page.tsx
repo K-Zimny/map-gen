@@ -16,16 +16,8 @@ function genGrid(rows: number, cols: number, complexity: number): number[][] {
   const generatedGrid = Array.from({ length: rows }, () =>
     genArray(complexity, cols)
   );
-  console.log(generatedGrid);
-  return generatedGrid;
-}
 
-function testGrid() {
-  return [
-    [0, 0, 0],
-    [0, 1, 0],
-    [0, 0, 0],
-  ];
+  return generatedGrid;
 }
 
 export default function Home() {
@@ -33,12 +25,12 @@ export default function Home() {
   const [gridSize, setGridSize] = useState(20);
   const [complexity, setComplexity] = useState(1.45);
   const [regenerateGrid, setRegenerateGrid] = useState(false);
+  const [removeIsolatedCells, setRemoveIsolatedCells] = useState(true);
 
   useEffect(() => {
-    // setGrid(genGrid(gridSize, gridSize, complexity));
-    setGrid(testGrid());
+    setGrid(genGrid(gridSize, gridSize, complexity));
     setRegenerateGrid(false);
-  }, [gridSize, complexity, regenerateGrid]);
+  }, [gridSize, complexity, regenerateGrid, removeIsolatedCells]);
 
   return (
     <div className="App">
@@ -50,8 +42,10 @@ export default function Home() {
             complexity={complexity}
             setComplexity={setComplexity}
             setRegenerateGrid={setRegenerateGrid}
+            removeIsolatedCells={removeIsolatedCells}
+            setRemoveIsolatedCells={setRemoveIsolatedCells}
           />
-          <Grid grid={grid} />
+          <Grid grid={grid} removeIsolatedCells={removeIsolatedCells} />
         </>
       )}
     </div>
